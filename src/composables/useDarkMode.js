@@ -1,6 +1,6 @@
 import { ref, watchEffect } from 'vue'
 
-const STORAGE_KEY = 'lumina-color-scheme'
+const STORAGE_KEY = 'zmr-color-scheme'
 
 const isDark = ref(false)
 let initialized = false

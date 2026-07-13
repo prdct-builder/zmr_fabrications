@@ -1,24 +1,37 @@
-import { Zap, Users, Target, Globe } from '@lucide/vue'
+import { ShieldCheck, Clock, Factory, PhoneCall } from '@lucide/vue'
+
+export const whyChooseUsContent = {
+  eyebrow: 'Why choose us',
+  headingBefore: 'Built for contractors who refuse to ',
+  headingHighlight: 'compromise on quality',
+  headingAfter: '',
+  description:
+    'From material sourcing to final delivery, every product we fabricate is held to the same standard — strong, reliable, and ready for the job site.',
+  image: {
+    src: '/contact_us.png',
+    alt: 'ZMR Fabrications welder at work'
+  }
+}
 
 export const reasons = [
   {
-    icon: Zap,
-    title: 'Fast, focused delivery',
-    description: 'Lean teams and tight feedback loops mean fewer meetings and faster shipping.'
+    icon: Factory,
+    title: 'High-grade materials',
+    description: 'Every product is manufactured from high-grade, corrosion-resistant steel built to last.'
   },
   {
-    icon: Users,
-    title: 'Senior talent only',
-    description: 'Every engagement is staffed by senior strategists, designers, and engineers.'
+    icon: ShieldCheck,
+    title: 'Built to precise standards',
+    description: 'Strength, durability, and safety are engineered into every component we fabricate.'
   },
   {
-    icon: Target,
-    title: 'Outcomes over output',
-    description: "We measure success by your metrics — revenue, retention, and growth — not hours."
+    icon: Clock,
+    title: 'On-time delivery',
+    description: 'We commit to reliable delivery schedules so your project timelines stay on track.'
   },
   {
-    icon: Globe,
-    title: 'Global, remote-first',
-    description: 'A distributed team spanning time zones so work keeps moving around the clock.'
+    icon: PhoneCall,
+    title: '24/7 customer support',
+    description: "We're available around the clock — call us anytime with questions or orders."
   }
 ]

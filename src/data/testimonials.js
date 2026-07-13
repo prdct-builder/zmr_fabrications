@@ -1,30 +1,32 @@
+export const reviewsContent = {
+  eyebrow: 'Reviews',
+  headingBefore: 'Reviews from ',
+  headingHighlight: 'Our Customers',
+  headingAfter: ''
+}
+
 export const testimonials = [
   {
+    rating: 5,
+    headline: 'Reliable and Durable',
     quote:
-      'Lumina rebuilt our entire product experience in under three months. The results speak for themselves — engagement is up, churn is down, and our team finally has a design system to build on.',
-    name: 'Sarah Chen',
-    role: 'VP of Product, Orbit Finance',
-    avatar: 'https://i.pravatar.cc/150?img=47'
+      "We've been using the centering plates and prop jacks from this supplier for over six months on multiple sites. The build quality is excellent – no rusting, warping, or bending even after extended use. The plates fit perfectly and provide solid support during slab work. Highly recommended for contractors looking for reliability on site.",
+    name: 'Anji Nandula',
+    date: '24 Jul'
   },
   {
-    quote:
-      "The most senior, thoughtful team we've worked with. They pushed back when it mattered and delivered ahead of schedule every single time.",
-    name: 'Marcus Johnson',
-    role: 'CEO, Verdant Health',
-    avatar: 'https://i.pravatar.cc/150?img=12'
+    rating: 4,
+    headline: 'Worth the investment',
+    quote: 'Excellent spans and column boxes. Durability is good.',
+    name: 'Siddik',
+    date: '12 Jul'
   },
   {
+    rating: 5,
+    headline: 'Top-Quality Products',
     quote:
-      'From strategy to launch, Lumina felt like an extension of our own team. Our checkout conversion jumped 38% within the first month of shipping their redesign.',
-    name: 'Priya Nair',
-    role: 'Head of Growth, Northwind Retail',
-    avatar: 'https://i.pravatar.cc/150?img=32'
-  },
-  {
-    quote:
-      'Exceptional craft and communication. Every deliverable was polished, on-brand, and grounded in real user research.',
-    name: 'Daniel Reyes',
-    role: 'Founder, Solace Wellness',
-    avatar: 'https://i.pravatar.cc/150?img=68'
+      'We ordered a full batch of scaffolding accessories including prop jacks, centering plates, and spans. Every product was manufactured to spec, arrived on time, and performed flawlessly during our latest project.',
+    name: 'Ravi',
+    date: '19 May'
   }
 ]

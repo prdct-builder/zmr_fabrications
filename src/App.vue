@@ -6,11 +6,11 @@ import BackToTop from './components/layout/BackToTop.vue'
 
 import Hero from './components/sections/Hero.vue'
 import About from './components/sections/About.vue'
-import Services from './components/sections/Services.vue'
+import Products from './components/sections/Products.vue'
 import WhyChooseUs from './components/sections/WhyChooseUs.vue'
 import Stats from './components/sections/Stats.vue'
-import Portfolio from './components/sections/Portfolio.vue'
-import Testimonials from './components/sections/Testimonials.vue'
+import Gallery from './components/sections/Gallery.vue'
+import Reviews from './components/sections/Reviews.vue'
 import FAQ from './components/sections/FAQ.vue'
 import Contact from './components/sections/Contact.vue'
 </script>
@@ -21,11 +21,11 @@ import Contact from './components/sections/Contact.vue'
   <main>
     <Hero />
     <About />
-    <Services />
+    <Products />
     <WhyChooseUs />
     <Stats />
-    <Portfolio />
-    <Testimonials />
+    <Gallery />
+    <Reviews />
     <FAQ />
     <Contact />
   </main>

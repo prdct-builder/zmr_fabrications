@@ -1,6 +1,6 @@
 export const stats = [
-  { target: 180, suffix: '+', label: 'Projects delivered' },
-  { target: 98, suffix: '%', label: 'Client satisfaction' },
-  { target: 42, suffix: 'M+', prefix: '$', label: 'Revenue generated for clients' },
-  { target: 12, suffix: '', label: 'Years in business' }
+  { target: 500, suffix: '+', label: 'Products delivered' },
+  { target: 15, suffix: '+', label: 'Years of experience' },
+  { target: 1000, suffix: '+', label: 'Happy customers' },
+  { target: 24, suffix: '/7', label: 'Support availability' }
 ]

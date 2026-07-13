@@ -1,32 +1,38 @@
+export const faqContent = {
+  eyebrow: 'FAQ',
+  heading: 'Frequently asked questions',
+  description: "Can't find the answer you're looking for? Reach out to our team below."
+}
+
 export const faqs = [
   {
-    question: 'What industries do you typically work with?',
+    question: 'What materials are your products made from?',
     answer:
-      "We partner with ambitious companies across fintech, healthtech, e-commerce, and B2B SaaS — but our process adapts to any industry with a strong product and growth ambition."
+      'All our scaffolding components — column boxes, prop jacks, cup locks, spans, base jacks, and centering plates — are manufactured from high-grade steel with a corrosion-resistant, galvanized finish for long-term durability.'
   },
   {
-    question: 'How long does a typical engagement take?',
+    question: 'Do you offer custom sizes and configurations?',
     answer:
-      'Most engagements run 6-12 weeks for a design sprint or MVP, and 3-6 months for a full product build. We scope timelines together during discovery.'
+      'Yes. Our products are available in various sizes and configurations to suit residential, commercial, and industrial structural requirements. Get in touch to discuss your specific needs.'
   },
   {
-    question: 'Do you work with early-stage startups?',
+    question: 'What is your delivery area?',
     answer:
-      'Yes. We offer flexible engagement models for funded startups, from a focused design sprint to an embedded product team.'
+      "We're based in Nandigama, Andhra Pradesh, and deliver to construction sites across the region. Call us to confirm delivery to your location."
   },
   {
-    question: 'What does the pricing structure look like?',
+    question: 'Do you offer bulk or wholesale pricing?',
     answer:
-      'We offer fixed-scope project pricing and monthly retainers for ongoing work. Every proposal is tailored after an initial discovery call.'
+      'Yes, we offer competitive pricing for bulk orders. Contact us with your quantity and specifications for a custom quote.'
   },
   {
-    question: 'Can you work with our existing in-house team?',
+    question: 'Are your products reusable?',
     answer:
-      'Absolutely — we regularly embed with in-house design and engineering teams, plugging into your existing tools and rituals.'
+      'Absolutely. Our fabrications are built to be durable and reusable across multiple projects, reducing long-term costs for contractors and builders.'
   },
   {
-    question: 'Do you offer post-launch support?',
+    question: 'How can I place an order?',
     answer:
-      'Every project includes a post-launch support window, with optional ongoing retainers for iteration, growth experiments, and maintenance.'
+      "Call us anytime — we're available 24 hours a day — and our team will walk you through availability and delivery."
   }
 ]

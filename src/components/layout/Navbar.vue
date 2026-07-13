@@ -1,17 +1,12 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Menu, X, Moon, Sun, Sparkles } from '@lucide/vue'
+import { Menu, X, Moon, Sun, PhoneCall } from '@lucide/vue'
 import { useScrollY } from '../../composables/useScrollY'
 import { useDarkMode } from '../../composables/useDarkMode'
 import BaseButton from '../ui/BaseButton.vue'
+import { site, navLinks, primaryPhone } from '../../data/site'
 
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#portfolio' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'FAQ', href: '#faq' }
-]
+const links = navLinks
 
 const { scrollY } = useScrollY()
 const scrolled = computed(() => scrollY.value > 12)
@@ -29,12 +24,9 @@ function closeMobile() {
     class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
     :class="scrolled ? 'glass border-b border-slate-200/70 dark:border-white/10 shadow-soft' : 'bg-transparent'"
   >
-    <nav class="container-lumina flex h-16 items-center justify-between sm:h-20" aria-label="Primary">
-      <a href="#top" class="flex items-center gap-2 font-display text-lg font-bold">
-        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-fuchsia-500 text-white shadow-glow">
-          <Sparkles class="h-5 w-5" />
-        </span>
-        <span>Lumina</span>
+    <nav class="container-zmr flex h-16 items-center justify-between sm:h-20" aria-label="Primary">
+      <a href="#home" class="flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-glow">
+        <img :src="site.logo" :alt="site.name" class="h-7 w-auto sm:h-8" />
       </a>
 
       <ul class="hidden items-center gap-8 lg:flex">
@@ -60,7 +52,10 @@ function closeMobile() {
             <Moon v-else class="h-5 w-5" />
           </Transition>
         </button>
-        <BaseButton href="#contact" size="sm">Get in touch</BaseButton>
+        <BaseButton :href="primaryPhone.href" size="sm">
+          <PhoneCall class="h-4 w-4" />
+          Call Now
+        </BaseButton>
       </div>
 
       <div class="flex items-center gap-2 lg:hidden">
@@ -105,7 +100,10 @@ function closeMobile() {
             </a>
           </li>
         </ul>
-        <BaseButton href="#contact" class="mt-4 w-full" @click="closeMobile">Get in touch</BaseButton>
+        <BaseButton :href="primaryPhone.href" class="mt-4 w-full" @click="closeMobile">
+          <PhoneCall class="h-4 w-4" />
+          Call Now
+        </BaseButton>
       </div>
     </Transition>
   </header>

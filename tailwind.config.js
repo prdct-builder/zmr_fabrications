@@ -10,28 +10,41 @@ export default {
       },
       colors: {
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b'
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
+          950: '#431407'
+        },
+        steel: {
+          50: '#f6f7f8',
+          100: '#eceef1',
+          200: '#d5dae0',
+          300: '#b0bac5',
+          400: '#8494a3',
+          500: '#647587',
+          600: '#505f70',
+          700: '#424e5c',
+          800: '#39424d',
+          900: '#333a43',
+          950: '#1a1e24'
         }
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'hero-glow':
-          'radial-gradient(60% 60% at 50% 0%, rgba(99,102,241,0.18) 0%, rgba(99,102,241,0) 70%)'
+          'radial-gradient(60% 60% at 50% 0%, rgba(249,115,22,0.16) 0%, rgba(249,115,22,0) 70%)'
       },
       boxShadow: {
         soft: '0 2px 20px -4px rgba(0,0,0,0.08)',
         'soft-lg': '0 20px 50px -12px rgba(0,0,0,0.15)',
-        glow: '0 0 0 1px rgba(99,102,241,0.15), 0 8px 30px -8px rgba(99,102,241,0.4)'
+        glow: '0 0 0 1px rgba(249,115,22,0.18), 0 8px 30px -8px rgba(249,115,22,0.45)'
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

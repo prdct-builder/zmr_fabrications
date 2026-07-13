@@ -14,7 +14,7 @@ const progress = computed(() => {
 <template>
   <div class="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent" aria-hidden="true">
     <div
-      class="h-full bg-gradient-to-r from-primary-500 via-violet-500 to-fuchsia-500 transition-[width] duration-150 ease-out"
+      class="h-full bg-gradient-to-r from-primary-500 via-amber-500 to-red-500 transition-[width] duration-150 ease-out"
       :style="{ width: progress + '%' }"
     />
   </div>

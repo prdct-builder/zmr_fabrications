@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Accordion from '../ui/Accordion.vue'
-import { faqs } from '../../data/faq'
+import { faqs, faqContent } from '../../data/faq'
 import { vReveal } from '../../composables/useScrollReveal'
 
 const openIndex = ref(0)
@@ -13,16 +13,16 @@ function toggle(i) {
 
 <template>
   <section id="faq" class="section-padding scroll-mt-24 bg-slate-50/60 dark:bg-white/[0.02]">
-    <div class="container-lumina">
+    <div class="container-zmr">
       <div class="mx-auto max-w-2xl text-center">
-        <div v-reveal class="eyebrow mx-auto">FAQ</div>
-        <h2 v-reveal="80" class="heading-lg mt-6">Frequently asked questions</h2>
+        <div v-reveal class="eyebrow mx-auto">{{ faqContent.eyebrow }}</div>
+        <h2 v-reveal="80" class="heading-lg mt-6">{{ faqContent.heading }}</h2>
         <p v-reveal="140" class="mt-5 text-lg text-muted">
-          Can't find the answer you're looking for? Reach out to our team below.
+          {{ faqContent.description }}
         </p>
       </div>
 
-      <div class="mx-auto mt-14 max-w-2xl space-y-4">
+      <div class="mx-auto mt-14 grid max-w-4xl gap-4 lg:grid-cols-2 lg:items-start">
         <Accordion
           v-for="(faq, i) in faqs"
           :key="faq.question"
