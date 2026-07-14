@@ -38,7 +38,7 @@
   }
 
   .heading-xl {
-    @apply text-4xl text-5xl font-bold leading-[1.08];
+    @apply text-4xl sm:text-5xl lg:text-5xl font-bold leading-[1.08];
   }
 
   .heading-lg {

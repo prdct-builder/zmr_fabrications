@@ -1,115 +1,66 @@
-# Tri2 Import/Export - Vue UI
+# ZMR Fabrications
 
-Modern Vue 3 frontend application for the Tri2 Import/Export system.
-
-## Features
-
-- 🎨 Modern, responsive UI built with Vue 3 and Element Plus
-- 🌲 Tree-based hierarchical navigation
-- 📤 Import/Export operations with drag-and-drop file upload
-- 📋 Copy/Paste functionality for configurations
-- 🔒 Role-based security management
-- ⚡ Fast development with Vite
-- 📱 Fully responsive design
+Business website for ZMR Fabrications, a scaffolding and construction-component fabrication company based in Nandigama, Andhra Pradesh. Single-page marketing site — no backend, no client-side routing, no state library.
 
 ## Tech Stack
 
-- **Vue 3** - Progressive JavaScript framework
-- **Vite** - Next-generation frontend tooling
-- **Vue Router** - Official router for Vue.js
-- **Pinia** - State management
-- **Element Plus** - Vue 3 UI library
-- **Axios** - HTTP client
+- **Vue 3** (Composition API, `<script setup>`)
+- **Vite** — dev server and build tooling
+- **Tailwind CSS** — utility-first styling, custom `primary`/`steel` palette in `tailwind.config.js`
+- **@lucide/vue** — icons
 
 ## Prerequisites
 
-- Node.js 16+ and npm
-
-## Installation
-
-```bash
-cd vue-app
-npm install
-```
+- Node.js 18+ and npm
 
 ## Development
 
 ```bash
-# Start development server
+npm install
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`
+The app runs at `http://localhost:3000`.
 
 ## Build for Production
 
 ```bash
-# Build for production
-npm run build
+npm run build      # outputs to dist/
+npm run preview    # serve the production build locally
+```
 
-# Preview production build
-npm run preview
+## Linting
+
+```bash
+npm run lint
 ```
 
 ## Project Structure
 
 ```
 vue-app/
+├── index.html                # HTML shell, fonts, theme-init script
+├── public/                   # Static assets served as-is (logos, product/gallery photos)
 ├── src/
-│   ├── components/         # Reusable components
-│   ├── views/             # Page components
-│   │   ├── ImportExportView.vue
-│   │   └── RoleSecurityView.vue
-│   ├── stores/            # Pinia state management
-│   │   └── importExport.js
-│   ├── services/          # API services
-│   │   └── api.js
-│   ├── router/            # Vue Router configuration
-│   │   └── index.js
-│   ├── App.vue            # Root component
-│   └── main.js            # Application entry point
-├── index.html             # HTML template
-├── vite.config.js         # Vite configuration
-└── package.json           # Dependencies
+│   ├── main.js                # App entry point
+│   ├── App.vue                 # Root layout — assembles all page sections
+│   ├── assets/main.css          # Tailwind entrypoint + shared component classes
+│   ├── components/
+│   │   ├── layout/              # Navbar, Footer, ScrollProgress, BackToTop
+│   │   ├── sections/             # One component per page section (Hero, About, Products, ...)
+│   │   └── ui/                    # Reusable primitives (BaseButton, BaseCard, Accordion, Counter)
+│   ├── composables/               # useDarkMode, useScrollY, useScrollReveal, useSectionRouter, useCounter
+│   └── data/                       # All page content/config — one file per section
 ```
 
-## API Integration
+## Content & Configuration
 
-The application is configured to proxy API requests to `http://localhost:8080`. Update the proxy configuration in `vite.config.js` to match your backend server.
+All business content — copy, phone numbers, address, image paths, headings — lives in `src/data/*.js`, not in the components. To update site content (e.g. a new product, a changed phone number), edit the relevant file in `src/data/` rather than the `.vue` files. Section components are purely presentational and import their content from there.
 
-Mock data is currently used for demonstration. To connect to the real backend:
+## Navigation
 
-1. Ensure the Java backend is running
-2. Update API endpoints in `src/services/api.js`
-3. Remove mock data from `src/stores/importExport.js`
+The site is a single scrolling page with no router. `src/composables/useSectionRouter.js` intercepts in-page anchor clicks, smooth-scrolls to the target section, and syncs the URL to a clean path (`/contact`) via the History API — so it behaves like a multi-page site without actually being one. Because of this, any static host must be configured to fall back to `index.html` for unmatched paths (e.g. Netlify `_redirects` with `/* /index.html 200`, or the equivalent nginx `try_files` rule) so that direct loads of `/contact` etc. don't 404.
 
-## Features Guide
+## Dark Mode
 
-### Import/Export View
-
-- **Tree Navigation**: Browse application configurations hierarchically
-- **Import**: Upload configuration files (ZIP format)
-- **Export**: Download configurations as ZIP files
-- **Copy/Paste**: Copy node types, workflow states, and properties
-- **Delete**: Remove configurations with confirmation
-- **Make a Copy**: Duplicate applications or workflows
-
-### Role-Based Security View
-
-- **Roles Management**: Add, view, and delete security roles
-- **Permissions**: Configure role permissions using a tree structure
-- **User Count**: See how many users are assigned to each role
-
-## Customization
-
-### Theme Colors
-
-The application uses Element Plus theming. To customize colors, modify the CSS variables in `App.vue`.
-
-### API Endpoints
-
-Update API endpoints in `src/services/api.js` to match your backend URLs.
-
-## License
-
-Copyright @2017, Triniti Corporation. All rights reserved.
+Theme state is managed by `src/composables/useDarkMode.js` (class-based, persisted to `localStorage` under `zmr-color-scheme`, defaults to OS preference). An inline script in `index.html` applies the `dark` class before Vue mounts to avoid a flash of the wrong theme on load.

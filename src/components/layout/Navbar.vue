@@ -22,11 +22,11 @@ function closeMobile() {
 <template>
   <header
     class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
-    :class="scrolled ? 'glass border-b border-slate-200/70 dark:border-white/10 shadow-soft' : 'bg-transparent'"
+    :class="scrolled ? 'glass shadow-soft' : 'bg-transparent'"
   >
     <nav class="container-zmr flex h-16 items-center justify-between sm:h-20" aria-label="Primary">
-      <a href="#home" class="flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-glow">
-        <img :src="site.logo" :alt="site.name" class="h-7 w-auto sm:h-8" />
+      <a href="#home" class="flex items-center rounded-xl">
+        <img :src="isDark ? site.dark_logo : site.light_logo" :alt="site.name" class="h-7 w-auto sm:h-20" />
       </a>
 
       <ul class="hidden items-center gap-8 lg:flex">

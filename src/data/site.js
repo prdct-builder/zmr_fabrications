@@ -1,6 +1,7 @@
 export const site = {
   name: 'ZMR Fabrications',
-  logo: '/logo/logo_board_transparent.png',
+  light_logo: '/logo/board_dark.png',
+  dark_logo: '/logo/board_light.png',
   tagline:
     'Quality scaffolding solutions for construction needs — custom fabrication of column boxes, prop jacks, cup locks, spans, base jacks, and centering plates.',
   phones: [
@@ -21,7 +22,7 @@ export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Products', href: '#products' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Reviews', href: '#testimonials' },
+  { label: 'Reviews', href: '#reviews' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' }
 ]
@@ -38,7 +39,7 @@ export const footerColumns = [
   {
     title: 'Resources',
     links: [
-      { label: 'Reviews', href: '#testimonials' },
+      { label: 'Reviews', href: '#reviews' },
       { label: 'FAQ', href: '#faq' },
       { label: 'Contact', href: '#contact' }
     ]

@@ -4,28 +4,44 @@ import { ChevronLeft, ChevronRight, Quote, Star } from '@lucide/vue'
 import { testimonials, reviewsContent } from '../../data/testimonials'
 import { vReveal } from '../../composables/useScrollReveal'
 
+const trackRef = ref(null)
 const active = ref(0)
-let timer = null
+let ticking = false
 
-function next() {
-  active.value = (active.value + 1) % testimonials.length
+function updateActive() {
+  const track = trackRef.value
+  if (!track) return
+  const trackCenter = track.scrollLeft + track.clientWidth / 2
+
+  let closestIndex = 0
+  let closestDistance = Infinity
+  Array.from(track.children).forEach((child, i) => {
+    const childCenter = child.offsetLeft + child.offsetWidth / 2
+    const distance = Math.abs(childCenter - trackCenter)
+    if (distance < closestDistance) {
+      closestDistance = distance
+      closestIndex = i
+    }
+  })
+  active.value = closestIndex
 }
 
-function prev() {
-  active.value = (active.value - 1 + testimonials.length) % testimonials.length
+function onScroll() {
+  if (ticking) return
+  ticking = true
+  requestAnimationFrame(() => {
+    updateActive()
+    ticking = false
+  })
 }
 
-function goTo(i) {
-  active.value = i
-  restart()
-}
-
-function restart() {
-  clearInterval(timer)
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (!reduced) {
-    timer = setInterval(next, 6000)
-  }
+function scrollByStep(dir) {
+  const track = trackRef.value
+  if (!track) return
+  const item = track.children[0]
+  const gap = 16
+  const amount = item ? item.getBoundingClientRect().width + gap : track.clientWidth * 0.8
+  track.scrollBy({ left: dir * amount, behavior: 'smooth' })
 }
 
 function initials(name) {
@@ -37,12 +53,18 @@ function initials(name) {
     .toUpperCase()
 }
 
-onMounted(restart)
-onUnmounted(() => clearInterval(timer))
+onMounted(() => {
+  const track = trackRef.value
+  if (!track) return
+  updateActive()
+  track.addEventListener('scroll', onScroll, { passive: true })
+})
+
+onUnmounted(() => trackRef.value?.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <section id="testimonials" class="section-padding scroll-mt-24">
+  <section id="reviews" class="section-padding scroll-mt-24">
     <div class="container-zmr">
       <div class="mx-auto max-w-2xl text-center">
         <div v-reveal class="eyebrow mx-auto">{{ reviewsContent.eyebrow }}</div>
@@ -51,20 +73,25 @@ onUnmounted(() => clearInterval(timer))
         </h2>
       </div>
 
-      <div v-reveal="140" class="relative mx-auto mt-14 max-w-3xl">
-        <Quote class="mx-auto h-10 w-10 text-primary-200 dark:text-primary-400/20" />
-
-        <div class="relative mt-4 min-h-[300px] sm:min-h-[260px]">
-          <TransitionGroup
-            enter-active-class="transition duration-500 ease-out"
-            enter-from-class="opacity-0 translate-x-6"
-            enter-to-class="opacity-100 translate-x-0"
-            leave-active-class="transition duration-300 ease-in absolute inset-0"
-            leave-from-class="opacity-100 translate-x-0"
-            leave-to-class="opacity-0 -translate-x-6"
+      <div v-reveal="140" class="relative mt-14">
+        <div
+          ref="trackRef"
+          class="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
+        >
+          <div
+            v-for="(t, i) in testimonials"
+            :key="t.name"
+            class="shrink-0 basis-[85%] snap-center sm:basis-[55%] lg:basis-[34%]"
           >
-            <div v-for="(t, i) in [testimonials[active]]" :key="active" class="text-center">
-              <div class="flex items-center justify-center gap-1 text-amber-400">
+            <div
+              class="h-full rounded-2xl border p-6 shadow-soft transition-all duration-300"
+              :class="i === active
+                ? 'border-primary-400 shadow-glow scale-100 opacity-100'
+                : 'border-slate-200/70 scale-[0.97] opacity-70 dark:border-white/10'"
+            >
+              <Quote class="h-7 w-7 text-primary-200 dark:text-primary-400/20" />
+
+              <div class="mt-4 flex items-center gap-1 text-amber-400">
                 <Star
                   v-for="n in 5"
                   :key="n"
@@ -72,12 +99,12 @@ onUnmounted(() => clearInterval(timer))
                   :class="n <= t.rating ? 'fill-current' : 'fill-none text-slate-300 dark:text-slate-700'"
                 />
               </div>
-              <p class="mt-4 font-display text-lg font-semibold">{{ t.headline }}</p>
-              <p class="mt-3 text-xl font-medium leading-relaxed text-slate-800 dark:text-slate-100 sm:text-2xl">
-                &ldquo;{{ t.quote }}&rdquo;
-              </p>
-              <div class="mt-6 flex items-center justify-center gap-3">
-                <span class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-steel-800 to-primary-600 font-display text-sm font-bold text-white">
+
+              <p class="mt-4 font-display font-semibold">{{ t.headline }}</p>
+              <p class="mt-3 text-muted leading-relaxed">&ldquo;{{ t.quote }}&rdquo;</p>
+
+              <div class="mt-6 flex items-center gap-3 border-t border-slate-200/70 pt-5 dark:border-white/10">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-steel-800 to-primary-600 font-display text-sm font-bold text-white">
                   {{ initials(t.name) }}
                 </span>
                 <div class="text-left">
@@ -86,36 +113,23 @@ onUnmounted(() => clearInterval(timer))
                 </div>
               </div>
             </div>
-          </TransitionGroup>
+          </div>
         </div>
 
-        <div class="mt-10 flex items-center justify-center gap-6">
+        <div class="mt-8 flex items-center justify-center gap-4">
           <button
             type="button"
             aria-label="Previous review"
-            class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-all hover:border-primary-300 hover:text-primary-600 dark:border-white/10 dark:text-slate-300 dark:hover:border-primary-400/40"
-            @click="prev(); restart()"
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-all hover:border-primary-300 hover:text-primary-600 dark:border-white/10 dark:text-slate-300 dark:hover:border-primary-400/40"
+            @click="scrollByStep(-1)"
           >
             <ChevronLeft class="h-5 w-5" />
           </button>
-
-          <div class="flex items-center gap-2">
-            <button
-              v-for="(t, i) in testimonials"
-              :key="t.name"
-              type="button"
-              :aria-label="`Go to review ${i + 1}`"
-              class="h-2 rounded-full transition-all duration-300"
-              :class="i === active ? 'w-6 bg-primary-600 dark:bg-primary-400' : 'w-2 bg-slate-300 dark:bg-slate-700'"
-              @click="goTo(i)"
-            />
-          </div>
-
           <button
             type="button"
             aria-label="Next review"
-            class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-all hover:border-primary-300 hover:text-primary-600 dark:border-white/10 dark:text-slate-300 dark:hover:border-primary-400/40"
-            @click="next(); restart()"
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-all hover:border-primary-300 hover:text-primary-600 dark:border-white/10 dark:text-slate-300 dark:hover:border-primary-400/40"
+            @click="scrollByStep(1)"
           >
             <ChevronRight class="h-5 w-5" />
           </button>

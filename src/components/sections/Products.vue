@@ -23,7 +23,7 @@ import { primaryPhone } from '../../data/site'
           v-reveal="i * 90"
           :padded="false"
         >
-          <div class="aspect-[4/3] overflow-hidden bg-white">
+          <div class="aspect-[4/3] overflow-hidden bg-white dark:bg-slate-900">
             <img
               :src="product.image"
               :alt="product.title"

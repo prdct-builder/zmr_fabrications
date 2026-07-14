@@ -15,6 +15,8 @@ export const hero = {
     { label: 'Experience', value: '8+ yrs' },
     { label: 'Support', value: '24/7' }
   ],
-  callBadge: { title: 'Call to order', subtitle: '+91-8978689859' },
+  callBadgePrimary: { title: 'Call to order', subtitle: '+91-8978689859' },
+  callBadgeSecondary: { title: 'Call to order', subtitle: '+91-8978087179' },
   availabilityBadge: 'Available 24/7'
 }
+ 

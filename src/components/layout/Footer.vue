@@ -1,17 +1,19 @@
 <script setup>
 import { Phone, MapPin, Clock } from '@lucide/vue'
 import { site, footerColumns } from '../../data/site'
+import { useDarkMode } from '../../composables/useDarkMode'
 
 const year = new Date().getFullYear()
 const columns = footerColumns
+const { isDark } = useDarkMode()
 </script>
 
 <template>
   <footer class="relative overflow-hidden border-t border-slate-200/70 bg-slate-50 dark:border-white/10 dark:bg-slate-950">
     <div class="container-zmr section-padding !py-16 grid gap-12 lg:grid-cols-[1.4fr_2fr]">
       <div>
-        <a href="#home" class="inline-flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-glow">
-          <img :src="site.logo" :alt="site.name" class="h-8 w-auto" />
+        <a href="#home" class="inline-flex items-center rounded-xl">
+          <img :src="isDark ? site.dark_logo : site.light_logo" :alt="site.name" class="h-24 w-auto" />
         </a>
         <p class="mt-4 max-w-sm text-muted leading-relaxed">
           {{ site.tagline }}

@@ -1,4 +1,5 @@
 <script setup>
+import { useSectionRouter } from './composables/useSectionRouter'
 import Navbar from './components/layout/Navbar.vue'
 import Footer from './components/layout/Footer.vue'
 import ScrollProgress from './components/layout/ScrollProgress.vue'
@@ -13,6 +14,8 @@ import Gallery from './components/sections/Gallery.vue'
 import Reviews from './components/sections/Reviews.vue'
 import FAQ from './components/sections/FAQ.vue'
 import Contact from './components/sections/Contact.vue'
+
+useSectionRouter()
 </script>
 
 <template>
