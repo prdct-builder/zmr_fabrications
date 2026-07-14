@@ -7,6 +7,7 @@ let initialized = false
 
 function applyClass(dark) {
   document.documentElement.classList.toggle('dark', dark)
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
 }
 
 function initDarkMode() {
