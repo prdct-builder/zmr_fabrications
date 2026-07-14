@@ -1,7 +1,7 @@
 {
-  "name": "premium-business-site",
+  "name": "zmr-fabrications",
   "version": "1.0.0",
-  "description": "Modern, premium single-page business website built with Vue 3 + Vite + Tailwind CSS",
+  "description": "ZMR Fabrications business website — Vue 3 + Vite + Tailwind CSS",
   "private": true,
   "type": "module",
   "scripts": {
