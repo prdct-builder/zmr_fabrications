@@ -1,5 +1,5 @@
 <script setup>
-import { Phone, MapPin, Clock } from '@lucide/vue'
+import { Phone, MapPin, Clock, Pin, Mail } from '@lucide/vue'
 import { site, footerColumns } from '../../data/site'
 import { useDarkMode } from '../../composables/useDarkMode'
 
@@ -20,12 +20,20 @@ const { isDark } = useDarkMode()
         </p>
         <ul class="mt-6 space-y-3 text-sm text-muted">
           <li class="flex items-center gap-2">
+            <Mail class="h-4 w-4 text-primary-600 dark:text-primary-400" />
+            {{ site.email.display }}
+          </li>
+          <li class="flex items-center gap-2">
             <Phone class="h-4 w-4 text-primary-600 dark:text-primary-400" />
             {{ site.phones.map((p) => p.display).join(', ') }}
           </li>
           <li class="flex items-start gap-2">
             <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-primary-600 dark:text-primary-400" />
             {{ site.address }}
+          </li>
+          <li class="flex items-start gap-2">
+            <Pin class="mt-0.5 h-4 w-4 shrink-0 text-primary-600 dark:text-primary-400" />
+            {{ site.pincode }}
           </li>
           <li class="flex items-center gap-2">
             <Clock class="h-4 w-4 text-primary-600 dark:text-primary-400" /> {{ site.hours }}

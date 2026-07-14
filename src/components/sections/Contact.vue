@@ -1,5 +1,5 @@
 <script setup>
-import { Phone, MapPin, Clock, PhoneCall } from '@lucide/vue'
+import { Mail, Phone, MapPin, Clock, PhoneCall, Pin } from '@lucide/vue'
 import BaseButton from '../ui/BaseButton.vue'
 import { vReveal } from '../../composables/useScrollReveal'
 import { contactContent } from '../../data/contact'
@@ -34,6 +34,18 @@ import { site, primaryPhone } from '../../data/site'
           <div class="card-surface p-6">
             <ul class="space-y-4">
               <li class="flex items-start gap-3">
+                <Mail class="mt-0.5 h-5 w-5 text-primary-600 dark:text-primary-400" />
+                <div>
+                  <p class="text-sm font-semibold">Email</p>
+                  <a
+                    :href="site.email.href"
+                    class="block text-sm text-muted hover:text-primary-600 dark:hover:text-primary-400"
+                  >
+                    {{ site.email.display }}
+                  </a>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
                 <Phone class="mt-0.5 h-5 w-5 text-primary-600 dark:text-primary-400" />
                 <div>
                   <p class="text-sm font-semibold">Phone</p>
@@ -52,6 +64,13 @@ import { site, primaryPhone } from '../../data/site'
                 <div>
                   <p class="text-sm font-semibold">Address</p>
                   <p class="text-sm text-muted">{{ site.address }}</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <Pin class="mt-0.5 h-5 w-5 text-primary-600 dark:text-primary-400" />
+                <div>
+                  <p class="text-sm font-semibold">Pincode</p>
+                  <p class="text-sm text-muted">{{ site.pincode }}</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
