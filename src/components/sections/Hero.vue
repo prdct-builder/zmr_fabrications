@@ -79,7 +79,7 @@ import { hero } from '../../data/hero'
           />
         </div>
 
-        <div class="absolute -bottom-6 -left-6 flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white p-4 shadow-soft-lg animate-float dark:border-white/10 dark:bg-slate-900">
+        <div class="absolute -bottom-6 -left-6 flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white p-2 shadow-soft-lg animate-float dark:border-white/10 dark:bg-slate-900">
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-steel-800 to-primary-600 text-white">
             <PhoneCall class="h-5 w-5" />
           </span>
@@ -89,7 +89,7 @@ import { hero } from '../../data/hero'
           </div>
         </div>
 
-        <div class="absolute -bottom-6 -right-6 flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white p-4 shadow-soft-lg animate-float dark:border-white/10 dark:bg-slate-900">
+        <div class="absolute -bottom-6 -right-6 flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white p-2 shadow-soft-lg animate-float dark:border-white/10 dark:bg-slate-900">
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-steel-800 to-primary-600 text-white">
             <PhoneCall class="h-5 w-5" />
           </span>

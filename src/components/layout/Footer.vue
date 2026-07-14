@@ -33,9 +33,9 @@ const { isDark } = useDarkMode()
         </ul>
       </div>
 
-      <div class="grid grid-cols-2 gap-8 sm:grid-cols-2">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         <div v-for="col in columns" :key="col.title">
-          <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
             {{ col.title }}
           </h3>
           <ul class="mt-4 space-y-3">

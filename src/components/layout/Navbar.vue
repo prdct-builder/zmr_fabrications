@@ -26,7 +26,7 @@ function closeMobile() {
   >
     <nav class="container-zmr flex h-16 items-center justify-between sm:h-20" aria-label="Primary">
       <a href="#home" class="flex items-center rounded-xl">
-        <img :src="isDark ? site.dark_logo : site.light_logo" :alt="site.name" class="h-7 w-auto sm:h-20" />
+        <img :src="isDark ? site.dark_logo : site.light_logo" :alt="site.name" class="h-16 w-auto sm:h-20" />
       </a>
 
       <ul class="hidden items-center gap-8 lg:flex">
