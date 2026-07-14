@@ -1,5 +1,6 @@
 export const site = {
   name: 'ZMR Fabrications',
+  url: 'https://zmr-fabrications.web.app',
   light_logo: '/logo/board_dark.png',
   dark_logo: '/logo/board_light.png',
   tagline:

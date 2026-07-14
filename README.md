@@ -59,8 +59,17 @@ All business content — copy, phone numbers, address, image paths, headings —
 
 ## Navigation
 
-The site is a single scrolling page with no router. `src/composables/useSectionRouter.js` intercepts in-page anchor clicks, smooth-scrolls to the target section, and syncs the URL to a clean path (`/contact`) via the History API — so it behaves like a multi-page site without actually being one. Because of this, any static host must be configured to fall back to `index.html` for unmatched paths (e.g. Netlify `_redirects` with `/* /index.html 200`, or the equivalent nginx `try_files` rule) so that direct loads of `/contact` etc. don't 404.
+The site is a single scrolling page with no router. `src/composables/useSectionRouter.js` intercepts in-page anchor clicks, smooth-scrolls to the target section, and syncs the URL to a clean path (`/contact`) via the History API — so it behaves like a multi-page site without actually being one. Because of this, any static host must be configured to fall back to `index.html` for unmatched paths so that direct loads of `/contact` etc. don't 404. `firebase.json` already has this rewrite configured (`"source": "**" → "/index.html"`).
 
 ## Dark Mode
 
 Theme state is managed by `src/composables/useDarkMode.js` (class-based, persisted to `localStorage` under `zmr-color-scheme`, defaults to OS preference). An inline script in `index.html` applies the `dark` class before Vue mounts to avoid a flash of the wrong theme on load.
+
+## Deployment
+
+Hosted on **Firebase Hosting** (project: `zmr-fabrications`) at [zmr-fabrications.web.app](https://zmr-fabrications.web.app). Deploys are automated via GitHub Actions (`.github/workflows/`):
+
+- `firebase-hosting-merge.yml` — builds and deploys to the live channel on every push to `main`.
+- `firebase-hosting-pull-request.yml` — builds a preview channel for each pull request.
+
+To deploy manually: `npm run build && firebase deploy` (requires the Firebase CLI and access to the `zmr-fabrications` project).
