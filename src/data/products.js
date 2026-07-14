@@ -13,7 +13,7 @@ export const products = [
       'Scaffolding centering plates provide firm and stable support for slab formwork systems. Engineered for durability and easy handling on all types of construction sites. Made from high-quality steel for long-lasting performance and load-bearing capacity.'
   },
   {
-    image: '/productsometis/prop_jacks.jpeg',
+    image: '/products/prop_jacks.jpeg',
     title: 'Prop Jacks',
     description:
       'Prop jacks offer adjustable vertical support for shuttering and formwork systems. Robust, easy to install, and designed to handle heavy loads with maximum stability. Manufactured from high-grade steel with a corrosion-resistant finish for long-term use.'
